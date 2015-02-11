@@ -35,6 +35,10 @@ class LeaflyLocation
     @mower.get(locations_path + @leafly_location_slug + '/menu')
   end
 
+  def details
+    @mower.get(locations_path + @leafly_location_slug)
+  end
+
   private
 
   def locations_path

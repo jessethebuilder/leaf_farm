@@ -5,7 +5,6 @@ module LeafFarmHelper
     "#{LEAFLY_ROOT}/#{dispensary_product.product_type}/#{dispensary_product.slug}"
   end
 
-
   def leafly_location_url(slug)
     "http://www.leafly.com/dispensary-info/#{slug}"
   end

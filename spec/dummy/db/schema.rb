@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150210042156) do
+ActiveRecord::Schema.define(version: 20150211124540) do
 
   create_table "leafly_connections", force: true do |t|
     t.string   "app_id"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20150210042156) do
     t.datetime "updated_at"
     t.string   "leafly_slug"
     t.text     "menu_data"
+    t.text     "details_data"
   end
 
   create_table "stores", force: true do |t|
