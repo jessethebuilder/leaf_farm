@@ -13,14 +13,24 @@ class LeaflyConnection < ActiveRecord::Base
     LeaflyLocation.new(app_id, app_key, slug, :app_name => app_name)
   end
 
-  def menu(slug, fresh: true)
-    if fresh
-      _menu = JSON.parse(location(slug).menu).group_by{ |i| i['type'] }
+  def menu(slug, refresh: true)
+    if refresh
+      _menu =  raw_menu(slug)
       update_attribute(:menu_data, _menu)
       _menu
     else
       menu_data || menu(slug, fresh: true)
     end
+  end
+
+  def special_menu(slug)
+    raw_menu(slug)
+  end
+
+  private
+
+  def raw_menu(slug)
+    JSON.parse(location(slug).menu).group_by{ |i| i['type'] }
   end
 
 end
