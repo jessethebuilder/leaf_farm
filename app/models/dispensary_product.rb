@@ -15,7 +15,7 @@ class DispensaryProduct
     dp.pricing_array = leafly_hash['pricing']
     if leafly_hash['strainInfo']
       dp.rating = leafly_hash['strainInfo']['rating']
-      dp.rating = leafly_hash['strainInfo']['ratingCount']
+      dp.rating_count = leafly_hash['strainInfo']['ratingCount']
       dp.product_type = leafly_hash['strainInfo']['category']
     end
 
