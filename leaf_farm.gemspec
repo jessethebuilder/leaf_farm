@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.email       = ["jessethebuilder@yahoo.com"]
   s.homepage    = "http://www.anysoft.us"
   s.summary     = "Leafly Gem"
-  s.description = "TODO: Description of LeafFarm."
+  s.description = "A Gem for working with the Leafly API"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
 
