@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    leaf_farm (0.0.1)
+    leaf_farm (0.0.2)
       rails (~> 4.0.2)
       rest-client (~> 1.7.2)
 

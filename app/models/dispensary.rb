@@ -10,7 +10,7 @@ class Dispensary
     d = Dispensary.new
     d.name = leafly_hash['name']
 
-    d.specials = []
+    #d.specials = []
 
     if leafly_hash['specialsList']
       leafly_hash['specialsList'].each do |special|
