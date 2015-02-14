@@ -12,6 +12,6 @@ module LeafFarmHelper
   #-------------Leafly Helpers-----------------------------
 
   def leafly_logo_link(size = 'large')
-    link_to image_tag(asset_url("leafly/leafly_logo_#{size}.png")), 'http://www.leafly.com', :target => '_blank'
+    link_to image_tag(asset_url("leaf_farm/leafly/leafly_logo_#{size}.png")), 'http://www.leafly.com', :target => '_blank'
   end
 end
