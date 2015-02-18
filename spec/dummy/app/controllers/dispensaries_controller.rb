@@ -1,13 +1,13 @@
 class DispensariesController < ApplicationController
+  before_action :set_leafly_slug
   before_action :set_dispensary
 
   def show
+
   end
 
   def menu
-
-    @menu = @dispensary.menu
-
+    @menu = @dispensary.leafly_menu
   end
 
   def info
@@ -16,12 +16,22 @@ class DispensariesController < ApplicationController
 
   private
 
-  def set_dispensary
-    @dispensary = Dispensary.find_or_build_from_leafly_slug(_leafly_slug)
+  def _leafly_connection
+    Dispensary.first.leafly_connection
   end
 
-  def _leafly_slug
-    params[:leafly_id] || 'green-orchard'
+  def set_leafly_slug
+    @leafly_slug = params[:leafly_id]
   end
+
+  def set_dispensary
+    if @leafly_slug
+      @dispensary = _leafly_connection.build_dispensary(@leafly_slug)
+      @dispensary.leafly_connection = _leafly_connection
+    else
+      @dispensary = Dispensary.first
+    end
+  end
+
 
 end

@@ -2,7 +2,9 @@ class DispensaryMenu < ActiveRecord::Base
   belongs_to :dispensary
   has_many :dispensary_products
 
-  #validates :dispensary_id, :presence => true
+  validates :dispensary_id, :presence => true
+
+  serialize :menu_data, JSON
 
   def populate_from_leafly!
     leafly_product_array.each do |p|
@@ -12,6 +14,8 @@ class DispensaryMenu < ActiveRecord::Base
     self
   end
 
+
+
   def leafly_product_array
     dispensary.leafly_connection.menu(dispensary.leafly_slug)
   end
@@ -19,4 +23,9 @@ class DispensaryMenu < ActiveRecord::Base
   def sorted_menu_hash
     dispensary_products.group_by{ |p| p.product_type }
   end
+
+  def update_menu_data_from_leafly
+
+  end
+
 end
