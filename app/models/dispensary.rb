@@ -1,45 +1,78 @@
-class Dispensary
-  attr_accessor :name, :logo_url, :description, :cover_photo_url, :photo_urls, :tagLine, :tagLineBlurb,
-                :commerce_options, :specials
+class Dispensary < ActiveRecord::Base
+  has_one :leafly_connection, :as => :leafly_connectable
+  has_one :contact_info, :as => :has_contact_info
 
-  def initialize()
-    @specials = []
+  has_one :dispensary_menu
+  #after_create{ |r| associate_dispensary_menu(r) }
+  #def associate_dispensary_menu(record)
+  #  if record.dispensary_menu.nil?
+  #    record.dispensary_menu = DispensaryMenu.new
+  #    dispensary_menu.save
+  #  end
+  #end
+
+  #def initialize(*args)
+  #  self.dispensary_menu = DispensaryMenu.new if self.dispensary_menu.nil?
+  #  super(*args)
+  #end
+
+  validates :name, presence: true
+
+  def menu
+    dispensary_menu.populate_from_leafly!
   end
 
-  def self.create_with_leafly_details_hash(leafly_hash)
-    d = Dispensary.new
-    d.name = leafly_hash['name']
-
-    #d.specials = []
-
-    if leafly_hash['specialsList']
-      leafly_hash['specialsList'].each do |special|
-        s = Special.new
-        s.name = special['title']
-        s.description = special['details']
-        s.fine_print = special['finePrint']
-        d.specials << s
-      end
+  def self.find_or_build_from_leafly_slug(slug)
+    find_from_leafly_slug(slug) || build_from_leafly_slug(slug)    
+  end
+  
+  def self.find_from_leafly_slug(slug)
+    d = where(:leafly_slug => slug).first
+    if d && d.send(:update_leafly?)
+      d.populate_from_leafly!
+      d.save
     end
-
     d
   end
 
-  class CommerceOptions
-    attr_accessor :atm, :credit, :veterans_discount, :ada, :delivery, :retail, :medical, :hours
+  def self.build_from_leafly_slug(slug)
+    d = Dispensary.new(:leafly_slug => slug)
+    d.leafly_connection = generic_connection_object
+    d.populate_from_leafly!    
   end
 
-  class ContactInfo
-    attr_accessor :address1, :address2, :city, :state, :zip, :phone, :website_url,
-                  :facebook_url, :twitter_url, :google_plus_url, :pinterest_url, :tumblr_url, :instagram_url
+  def populate_from_leafly!
+    d = self.leafly_connection.details(self.leafly_slug)
+    self.name = d['name']
+    self.atm = d['atm']
+    self.credit = d['creditCards']
+    self.veterans_discount = d['veteransDiscount']
+    self.ada = d['ada']
+    self
   end
 
-  class Special
-    attr_accessor :name, :description, :fine_print
+  #def
+  
+  private
+
+  def self.generic_connection_object
+    #override
+    LeaflyConnection.first
+  end
+  
+  def update_leafly?
+    #override this if necessary
+    #self.updated_at + 8.hours < Time.now
+    true
   end
 
-  class Review
 
-  end
 end
 
+class Special
+  attr_accessor :name, :description, :fine_print
+end
+
+class Review
+
+end

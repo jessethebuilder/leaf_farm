@@ -12,8 +12,7 @@ class StoresController < ApplicationController
   def show
     @store = Store.first
     lc = @store.leafly_connection
-    #@leafly_menu = LeaflyLocation.new(lc.app_id, lc.app_key, lc.leafly_slug).menu.}
-    @leafly_menu = lc.sorted_menu(lc.leafly_slug)
+    @dispensary = lc.build_dispensary('green-orchard')
   end
 
   # GET /stores/new

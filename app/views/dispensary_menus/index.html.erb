@@ -1,0 +1,27 @@
+<h1>Listing dispensary_menus</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Dispensary</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @dispensary_menus.each do |dispensary_menu| %>
+      <tr>
+        <td><%= dispensary_menu.dispensary_id %></td>
+        <td><%= link_to 'Show', dispensary_menu %></td>
+        <td><%= link_to 'Edit', edit_dispensary_menu_path(dispensary_menu) %></td>
+        <td><%= link_to 'Destroy', dispensary_menu, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Dispensary menu', new_dispensary_menu_path %>
