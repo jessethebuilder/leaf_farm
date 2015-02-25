@@ -6,7 +6,7 @@ source "https://rubygems.org"
 gemspec
 
 
-gem 'farm_tools', :git => 'https://github.com/jessethebuilder/farm_tools'
+gem 'farm_tools', :git => 'https://github.com/jessethebuilder/farm_tools' 
 # gem 'farm_tools', :path => 'C:\Users\jf\Desktop\jesseweb\farm_tools'
 gem 'rails', '4.2'
 
