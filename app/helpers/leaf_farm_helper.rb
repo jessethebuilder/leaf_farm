@@ -2,7 +2,7 @@ module LeafFarmHelper
   LEAFLY_ROOT = 'http://www.leafly.com'
 
   def leafly_strain_url(dispensary_product)
-    "#{LEAFLY_ROOT}/#{dispensary_product.category.downcase}/#{dispensary_product.slug}"
+    "#{LEAFLY_ROOT}/#{dispensary_product.category.to_s.downcase}/#{dispensary_product.slug}"
   end
 
   def leafly_location_url(slug)
