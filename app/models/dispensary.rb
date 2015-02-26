@@ -4,7 +4,8 @@ class Dispensary < ActiveRecord::Base
 
   has_one :dispensary_menu
   after_initialize{ |r| r.dispensary_menu = DispensaryMenu.new if r.dispensary_menu.nil? }
-  after_initialize{ |r| r.update_leafly }
+  #todo
+  # after_initialize{ |r| r.update_leafly }
 
   validates :name, presence: true
 
@@ -19,7 +20,13 @@ class Dispensary < ActiveRecord::Base
   end
 
   def leafly_menu
-    leafly_connection.build_quick_menu(leafly_slug){ |data| update_leafly_menu_data(data) }
+    #todo
+    # leafly_connection.build_quick_menu(leafly_slug){ |data| update_leafly_menu_data(data) }
+    a = []
+    menu_data.each do |m|
+      a << DispensaryProduct.build_from_leafly_hash(m)
+    end
+    a.group_by{ |p| p.product_type }
   end
 
   def update_leafly_menu_data(data)
