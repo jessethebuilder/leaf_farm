@@ -22,9 +22,9 @@ describe Dispensary do
 
 
   describe 'Idioms' do
-    it 'should create a DispensaryMenu if one is not created' do
-      disp.save
-      disp.dispensary_menu.should_not == nil
-    end
+    # it 'should create a DispensaryMenu if one is not created' do
+    #   disp.save
+    #   disp.dispensary_menu.should_not == nil
+    # end
   end
 end

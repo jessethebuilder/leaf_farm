@@ -1,20 +1,25 @@
 class Dispensary < ActiveRecord::Base
+  include LeaflyBridge
   has_one :leafly_connection, :as => :leafly_connectable
+
   has_one :contact_info, :as => :has_contact_info
 
   has_one :dispensary_menu
-  after_initialize{ |r| r.dispensary_menu = DispensaryMenu.new if r.dispensary_menu.nil? }
-  #todo
-  # after_initialize{ |r| r.update_leafly }
 
   validates :name, presence: true
 
   serialize :menu_data, JSON
 
+
+  # after_initialize{ |r| r.dispensary_menu = DispensaryMenu.new if r.dispensary_menu.nil? }
+
+  #update leafly if there is a leafly connection
+  # after_initialize{ |r| r.update_leafly if leafly_connection}
+
   def update_leafly
-    if !new_record? && leafly_connection
-      #todo
-      leafly_connection.populate_dispensary!(self)
+    #todo put update_frequency as column here or maybe in LeaflyConnection. Maybe move all of this to LC.
+    if updated_at + 8.hours
+      leafly_connection.populate_dispensary(self)
       save
     end
   end
