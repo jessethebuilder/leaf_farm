@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/jessethebuilder/farm_tools
-  revision: 29e1148078a79848a05d150c5674d5e48e047cd4
+  revision: 20f37f9d7582e34a0de2378d59f85e7a7aa8872e
   specs:
     farm_tools (0.0.2)
       rails
@@ -174,7 +174,7 @@ PLATFORMS
 DEPENDENCIES
   capybara
   database_cleaner (~> 1.0.0rc)
-  factory_girl_rails
+  factory_girl_rails (~> 4.0)
   faker
   farm_tools!
   leaf_farm!

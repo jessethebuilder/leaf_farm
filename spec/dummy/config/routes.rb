@@ -1,5 +1,5 @@
 Dummy::Application.routes.draw do
-  resource :store, only: [:show]
+  # resource :store, only: [:show]
 
   resource :dispensary, :only => [:show] do
     #get 'menu'

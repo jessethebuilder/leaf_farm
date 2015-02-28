@@ -5,6 +5,9 @@ require 'rspec/rails'
 #require 'rspec/autorun'
 require 'capybara/rspec'
 
+# Dir[File.expand_path("support"), __FILE__]
+Dir[Rails.root.join("../support/**/*.rb")].each {|f| require f}
+
 #require 'capybara/poltergeist'
 #Capybara.register_driver :poltergeist do |app|
 #  Capybara::Poltergeist::Driver.new(app, :phantomjs => "C:\Program Files\phantomjs-1.9.7-windows")
@@ -14,7 +17,7 @@ require 'capybara/rspec'
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 
-Dir[Rails.root.join("support/**/*.rb")].each {|f| require f}
+# Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 # Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
 #Capybara.register_driver :rack_test do |app|
