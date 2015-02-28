@@ -5,7 +5,6 @@ class LeaflyConnection < ActiveRecord::Base
 
   validates :app_id, presence: true
   validates :app_key, presence: true
-  # validates :update_frequency, :presence => true, :numericality => {:only_integer => true, :greater_than_or_equal_to => 0}
 
   def location(slug)
     LeaflyLocation.new(app_id, app_key, slug, :app_name => app_name)

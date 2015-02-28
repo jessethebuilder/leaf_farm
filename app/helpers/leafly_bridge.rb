@@ -66,7 +66,7 @@ module LeaflyBridge
 
 
   def build_special_from_leafly(special_hash)
-    Special.new(name: special_hash[:title], details: special_hash[:details], fine_print: special_hash['finePrint'])
+    Special.new(name: special_hash['title'], details: special_hash['details'], fine_print: special_hash['finePrint'])
   end
 
   #--------------------------Attribute Translation Hacks-------------------------------------
@@ -85,7 +85,6 @@ module LeaflyBridge
       dp.category = leafly_hash['strainInfo']['category']
     end
 
-    dp.specials_data = leafly_hash['specialsList']
     dp
   end
 
@@ -94,12 +93,13 @@ module LeaflyBridge
     raise ArgumentError, 'Dispensary has not Leafly Slug' if self.leafly_slug.nil?
 
     d = leafly_connection.details(self.leafly_slug)
-    #self.source = 'leafly'
     self.name = d['name']
     self.atm = d['atm']
     self.credit = d['creditCards']
     self.veterans_discount = d['veteransDiscount']
     self.ada = d['ada']
+    self.specials_data = d['specialsList']
+
 
     self
   end
