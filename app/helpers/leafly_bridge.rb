@@ -10,7 +10,7 @@ module LeaflyBridge
        has_one :leafly_connection, :as => :leafly_connectable
 
        #main access for methods in this module.
-       define_singleton_method(:find_or_build_from_leafly_slug) do |slug, leafly_connection, update_frequency: 3600|
+       define_singleton_method(:find_or_build_from_leafly) do |slug, leafly_connection, update_frequency: 3600|
         #this find method also manages data updates from Leafly, based on :update_frequency
         #does not save the record if :new_record?, but does if not.
         dispensary = Dispensary.where(:leafly_slug => slug).first || Dispensary.new(:leafly_slug => slug, :update_frequency => update_frequency)

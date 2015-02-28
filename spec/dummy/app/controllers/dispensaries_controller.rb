@@ -25,7 +25,7 @@ class DispensariesController < ApplicationController
   end
 
   def set_dispensary
-    @dispensary = Dispensary.find_or_build_from_leafly_slug('denver-relief', LeaflyConnection.first, :update_frequency => Integer(8.hours))
+    @dispensary = Dispensary.find_or_build_from_leafly('denver-relief', LeaflyConnection.first, :update_frequency => Integer(8.hours))
     @dispensary.save if Dispensary.count == 0
     @dispensary
   end
