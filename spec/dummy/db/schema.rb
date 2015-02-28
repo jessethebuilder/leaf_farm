@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150227202404) do
+ActiveRecord::Schema.define(version: 20150228021752) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "label"
@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 20150227202404) do
     t.boolean  "medical"
     t.text     "hours"
     t.integer  "update_frequency"
+    t.text     "specials_data"
   end
 
   create_table "dispensary_menus", force: :cascade do |t|
@@ -113,6 +114,14 @@ ActiveRecord::Schema.define(version: 20150227202404) do
     t.string   "instagram_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "specials", force: :cascade do |t|
+    t.string   "name"
+    t.text     "details"
+    t.string   "fine_print"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "stores", force: :cascade do |t|

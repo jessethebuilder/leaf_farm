@@ -8,6 +8,7 @@ class Dispensary < ActiveRecord::Base
   validates :name, presence: true
 
   serialize :menu_data, JSON
+  serialize :specials_data, JSON
 end
 
 class Special

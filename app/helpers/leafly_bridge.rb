@@ -11,9 +11,10 @@ module LeaflyBridge
 
        #main access for methods in this module.
        define_singleton_method(:find_or_build_from_leafly) do |slug, leafly_connection, update_frequency: 3600|
-        #this find method also manages data updates from Leafly, based on :update_frequency
-        #does not save the record if :new_record?, but does if not.
-        dispensary = Dispensary.where(:leafly_slug => slug).first || Dispensary.new(:leafly_slug => slug, :update_frequency => update_frequency)
+
+       #this find method also manages data updates from Leafly, based on :update_frequency
+       #does not save the record if :new_record?, but does if not.
+       dispensary = Dispensary.where(:leafly_slug => slug).first || Dispensary.new(:leafly_slug => slug, :update_frequency => update_frequency)
 
         #attach a LeaflyConnection to this Dispensary, if one does not exist
         dispensary.leafly_connection ||= leafly_connection
@@ -40,6 +41,10 @@ module LeaflyBridge
     a.group_by{ |p| p.product_type }
   end
 
+  def specials
+    specials_data.map{ |s| build_special_from_leafly(s) }
+  end
+
   private
 
   def menu_data
@@ -59,6 +64,12 @@ module LeaflyBridge
     data
   end
 
+
+  def build_special_from_leafly(special_hash)
+    Special.new(name: special_hash[:title], details: special_hash[:details], fine_print: special_hash['finePrint'])
+  end
+
+  #--------------------------Attribute Translation Hacks-------------------------------------
   def build_dispensary_product_from_leafly(leafly_hash)
     dp = DispensaryProduct.new
     dp.source = 'leafly'
@@ -73,8 +84,11 @@ module LeaflyBridge
       dp.rating_count = leafly_hash['strainInfo']['ratingCount']
       dp.category = leafly_hash['strainInfo']['category']
     end
+
+    dp.specials_data = leafly_hash['specialsList']
     dp
   end
+
 
   def populate_dispensary!
     raise ArgumentError, 'Dispensary has not Leafly Slug' if self.leafly_slug.nil?
