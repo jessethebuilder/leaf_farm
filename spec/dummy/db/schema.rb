@@ -118,10 +118,10 @@ ActiveRecord::Schema.define(version: 20150228021752) do
 
   create_table "specials", force: :cascade do |t|
     t.string   "name"
-    t.text     "details"
+    t.text     "description"
     t.string   "fine_print"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "stores", force: :cascade do |t|

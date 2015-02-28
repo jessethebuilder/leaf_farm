@@ -24,6 +24,7 @@ module LeaflyBridge
           dispensary.send(:populate_dispensary!)
           unless dispensary.new_record?
             dispensary.touch
+            dispensary.update_frequency = update_frequency
             dispensary.save
           end
         end
@@ -66,7 +67,7 @@ module LeaflyBridge
 
 
   def build_special_from_leafly(special_hash)
-    Special.new(name: special_hash['title'], details: special_hash['details'], fine_print: special_hash['finePrint'])
+    Special.new(name: special_hash['title'], description: special_hash['details'], fine_print: special_hash['finePrint'])
   end
 
   #--------------------------Attribute Translation Hacks-------------------------------------
@@ -98,6 +99,7 @@ module LeaflyBridge
     self.credit = d['creditCards']
     self.veterans_discount = d['veteransDiscount']
     self.ada = d['ada']
+
     self.specials_data = d['specialsList']
 
 

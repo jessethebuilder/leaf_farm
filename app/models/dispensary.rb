@@ -11,10 +11,6 @@ class Dispensary < ActiveRecord::Base
   serialize :specials_data, JSON
 end
 
-class Special
-  attr_accessor :name, :description, :fine_print
-end
-
 class Review
 
 end
