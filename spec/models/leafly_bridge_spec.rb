@@ -1,5 +1,5 @@
 require 'rails_helper'
 
-define LeaflyBridge do
+describe LeaflyBridge do
 
 end

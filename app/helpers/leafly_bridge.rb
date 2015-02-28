@@ -103,6 +103,7 @@ module LeaflyBridge
     self.credit = d['creditCards']
     self.veterans_discount = d['veteransDiscount']
     self.ada = d['ada']
+    self.photo_urls = d['photos']
 
     self.specials_data = d['specialsList']
 
