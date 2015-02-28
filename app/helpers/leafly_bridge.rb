@@ -8,6 +8,7 @@ module LeaflyBridge
      klass.class_eval do
 
        has_one :leafly_connection, :as => :leafly_connectable
+       validates :leafly_slug, :presence => true
 
        #main access for methods in this module.
        define_singleton_method(:find_or_build_from_leafly) do |slug, leafly_connection, update_frequency: 3600|
@@ -45,6 +46,9 @@ module LeaflyBridge
   def specials
     specials_data.map{ |s| build_special_from_leafly(s) }
   end
+
+
+
 
   private
 

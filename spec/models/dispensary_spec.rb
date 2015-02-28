@@ -10,6 +10,7 @@ describe Dispensary do
   let(:disp){ build :dispensary }
   describe 'Validations' do
     it{ should validate_presence_of :name }
+    it{ should validate_presence_of :leafly_slug }
 
   end
 
