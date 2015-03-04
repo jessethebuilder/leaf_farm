@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150304202825) do
+ActiveRecord::Schema.define(version: 20150304225534) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "label"
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 20150304202825) do
     t.integer  "update_frequency"
     t.text     "specials_data"
     t.text     "reviews_data"
+    t.string   "google_api_key"
   end
 
   create_table "dispensary_menus", force: :cascade do |t|
