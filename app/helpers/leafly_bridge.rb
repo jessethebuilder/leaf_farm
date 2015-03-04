@@ -47,9 +47,6 @@ module LeaflyBridge
     specials_data.map{ |s| build_special_from_leafly(s) }
   end
 
-
-
-
   private
 
   def menu_data
@@ -68,7 +65,6 @@ module LeaflyBridge
 
     data
   end
-
 
   def build_special_from_leafly(special_hash)
     Special.new(name: special_hash['title'], description: special_hash['details'], fine_print: special_hash['finePrint'])
@@ -93,7 +89,6 @@ module LeaflyBridge
     dp
   end
 
-
   def populate_dispensary!
     raise ArgumentError, 'Dispensary has not Leafly Slug' if self.leafly_slug.nil?
 
@@ -103,12 +98,46 @@ module LeaflyBridge
     self.credit = d['creditCards']
     self.veterans_discount = d['veteransDiscount']
     self.ada = d['ada']
+
+    self.delivery = d['delivery']
+    self.retail = d['retail']
+    self.medical = d['medical']
+    self.store_front = d['storefront']
+
+    self.hours = d['hours']
+    self.blurb = d['blurb']
+
+    self.logo_url = d['logo']
     self.photo_urls = d['photos']
+    self.cover_photo_url = d['coverPhoto']
+    self.tag_line = d['tagLine']
+    self.tag_line_blurb = d['tagLineBlurb']
 
     self.specials_data = d['specialsList']
 
+    self.contact_info = build_dispensary_contact_info(d)
 
     self
+  end
+
+  def build_dispensary_contact_info(details_hash)
+    ci = ContactInfo.new
+    ci.phone = details_hash['phone']
+    ci.website_url = details_hash['wesbsite']
+
+    sn = ci.build_social_networking_profile
+    sn.facebook_url = details_hash['facebookUrl']
+    sn.twitter_url = details_hash['twitterUrl']
+    #todo add other social networking
+
+    a = ci.build_address
+    a.street = details_hash['address1']
+    a.street2 = details_hash['address2']
+    a.city = details_hash['city']
+    a.state = details_hash['state']
+    a.zip = details_hash['zip']
+
+    ci
   end
 
 end

@@ -10,8 +10,5 @@ class Dispensary < ActiveRecord::Base
   serialize :menu_data, JSON
   serialize :specials_data, JSON
   serialize :photo_urls, JSON
-end
-
-class Review
-
+  serialize :reviews_data, JSON
 end

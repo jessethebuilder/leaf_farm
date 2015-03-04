@@ -18,7 +18,7 @@ describe Dispensary do
     it{ should have_one :contact_info }
     it{ should have_one :leafly_connection }
 
-    it{ should have_one :dispensary_menu }
+    # it{ should have_one :dispensary_menu }
   end
 
 
