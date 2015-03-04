@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150228021752) do
+ActiveRecord::Schema.define(version: 20150304202825) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "label"
@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 20150228021752) do
     t.text     "hours"
     t.integer  "update_frequency"
     t.text     "specials_data"
+    t.text     "reviews_data"
   end
 
   create_table "dispensary_menus", force: :cascade do |t|

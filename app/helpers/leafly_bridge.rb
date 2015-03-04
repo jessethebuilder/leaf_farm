@@ -94,6 +94,10 @@ module LeaflyBridge
 
     d = leafly_connection.details(self.leafly_slug)
     self.name = d['name']
+    self.description = d['blurb']
+
+    self.hours = d['hours']
+
     self.atm = d['atm']
     self.credit = d['creditCards']
     self.veterans_discount = d['veteransDiscount']
@@ -103,9 +107,6 @@ module LeaflyBridge
     self.retail = d['retail']
     self.medical = d['medical']
     self.store_front = d['storefront']
-
-    self.hours = d['hours']
-    self.blurb = d['blurb']
 
     self.logo_url = d['logo']
     self.photo_urls = d['photos']
