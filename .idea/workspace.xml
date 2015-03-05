@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8e5940c6-87c4-4407-8f42-b54ef32fcf27" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20150304225534_add_google_api_key_to_dispensary.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/dummy/db/schema.rb" afterPath="$PROJECT_DIR$/spec/dummy/db/schema.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/dispensary.rb" afterPath="$PROJECT_DIR$/app/models/dispensary.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="leaf_farm.iws" />
@@ -57,21 +56,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="20150304225534_add_google_api_key_to_dispensary.rb" pinned="false" current-in-tab="true">
+      <file leaf-file-name="20150304225534_add_google_api_key_to_dispensary.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/db/migrate/20150304225534_add_google_api_key_to_dispensary.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.023842918" vertical-offset="0" max-vertical-offset="713">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="187">
               <caret line="1" column="12" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dispensary.rb" pinned="false" current-in-tab="false">
+      <file leaf-file-name="dispensary.rb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/models/dispensary.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.5862069" vertical-offset="0" max-vertical-offset="323">
-              <caret line="1" column="18" selection-start-line="1" selection-start-column="18" selection-end-line="1" selection-end-column="18" />
+            <state vertical-scroll-proportion="0.0745614" vertical-offset="0" max-vertical-offset="684">
+              <caret line="3" column="73" selection-start-line="3" selection-start-column="73" selection-end-line="3" selection-end-column="73" />
               <folding />
             </state>
           </provider>
@@ -120,8 +119,8 @@
         <option value="$PROJECT_DIR$/spec/models/dispensary_spec.rb" />
         <option value="$PROJECT_DIR$/spec/features/leafly_connection_requests_spec.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20150304202825_add_reviews_data_to_dispensary.rb" />
-        <option value="$PROJECT_DIR$/app/models/dispensary.rb" />
         <option value="$PROJECT_DIR$/app/helpers/leafly_bridge.rb" />
+        <option value="$PROJECT_DIR$/app/models/dispensary.rb" />
       </list>
     </option>
   </component>
@@ -194,6 +193,38 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="migrate" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="leaf_farm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="leaf_farm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="leaf_farm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="leaf_farm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -699,7 +730,13 @@
       <option name="project" value="LOCAL" />
       <updated>1425502099314</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Leafly Bridge Class">
+      <created>1425509794377</created>
+      <option name="number" value="00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1425509794377</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1093,14 +1130,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/dispensary.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.5862069" vertical-offset="0" max-vertical-offset="323">
-          <caret line="1" column="18" selection-start-line="1" selection-start-column="18" selection-end-line="1" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/spec/dummy/db/schema.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="4.6896553" vertical-offset="935" max-vertical-offset="2414">
@@ -1119,8 +1148,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/db/migrate/20150304225534_add_google_api_key_to_dispensary.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.023842918" vertical-offset="0" max-vertical-offset="713">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="187">
           <caret line="1" column="12" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/dispensary.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0745614" vertical-offset="0" max-vertical-offset="684">
+          <caret line="3" column="73" selection-start-line="3" selection-start-column="73" selection-end-line="3" selection-end-column="73" />
           <folding />
         </state>
       </provider>

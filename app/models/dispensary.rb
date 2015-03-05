@@ -1,7 +1,7 @@
 class Dispensary < ActiveRecord::Base
   include LeaflyBridge
 
-  has_one :contact_info, :as => :has_contact_info
+  has_one :contact_info, :as => :has_contact_info, :dependent => :destroy
 
   # has_one :dispensary_menu
 
