@@ -1,0 +1,16 @@
+<%= form_for @patient_profile do |f| %>
+
+  <%= image_select f, :certification, :alt_label => 'State Medical Certification', :accepts_remote_url => false %>
+
+  <%= image_select f, :state_id, :accepts_remote_url => false %>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+        <%= f.submit :class => 'btn btn-primary' %>
+      </div>
+    </div>
+  </div>
+
+
+<% end %>

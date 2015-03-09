@@ -1,1 +1,22 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <ul>
+        <% if patient_signed_in? %>
+          <li>
+            <%= link_to('Logout', destroy_patient_session_path, :method => :delete) %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to 'Login', new_patient_session_path %>
+          </li>
+          <li style="font-weight:800;">
+            <%= link_to 'Sign Up', new_patient_registration_path %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+
 <%= @dispensary.inspect %>

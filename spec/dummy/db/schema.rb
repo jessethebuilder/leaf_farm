@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150304225534) do
+ActiveRecord::Schema.define(version: 20150307214559) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "label"
@@ -27,6 +27,20 @@ ActiveRecord::Schema.define(version: 20150304225534) do
     t.float    "longitude"
     t.string   "has_address_type"
     t.integer  "has_address_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "bootsy_image_galleries", force: :cascade do |t|
+    t.integer  "bootsy_resource_id"
+    t.string   "bootsy_resource_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "bootsy_images", force: :cascade do |t|
+    t.string   "image_file"
+    t.integer  "image_gallery_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -92,6 +106,14 @@ ActiveRecord::Schema.define(version: 20150304225534) do
     t.integer  "dispensary_menu_id"
   end
 
+  create_table "farm_notes", force: :cascade do |t|
+    t.integer  "has_farm_notes_id"
+    t.string   "has_farm_notes_type"
+    t.text     "content"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
   create_table "leafly_connections", force: :cascade do |t|
     t.string   "app_id"
     t.string   "app_key"
@@ -101,6 +123,53 @@ ActiveRecord::Schema.define(version: 20150304225534) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "news_stories", force: :cascade do |t|
+    t.string   "title"
+    t.text     "content"
+    t.boolean  "published",                default: false
+    t.boolean  "archived",                 default: false
+    t.string   "main_news_story_image"
+    t.string   "writes_news_stories_type"
+    t.string   "writes_news_stories_id"
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+    t.string   "slug"
+  end
+
+  create_table "patient_profiles", force: :cascade do |t|
+    t.string   "state_id"
+    t.string   "certification"
+    t.date     "state_id_expires"
+    t.date     "certification_expires"
+    t.text     "symptoms",                 default: "--- []\n"
+    t.string   "sex"
+    t.string   "first_name"
+    t.string   "middle_name"
+    t.string   "last_name"
+    t.integer  "has_patient_profile_id"
+    t.string   "has_patient_profile_type"
+    t.datetime "created_at",                                    null: false
+    t.datetime "updated_at",                                    null: false
+  end
+
+  create_table "patients", force: :cascade do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "patients", ["email"], name: "index_patients_on_email", unique: true
+  add_index "patients", ["reset_password_token"], name: "index_patients_on_reset_password_token", unique: true
 
   create_table "social_networking_profiles", force: :cascade do |t|
     t.string   "facebook_app_id"
@@ -116,6 +185,8 @@ ActiveRecord::Schema.define(version: 20150304225534) do
     t.string   "instagram_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "leafly_app_id"
+    t.string   "leafly_app_key"
   end
 
   create_table "specials", force: :cascade do |t|

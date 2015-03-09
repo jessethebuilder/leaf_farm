@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
-  resources :specials
+  resources :patient_profiles
 
-  resources :dispensary_menus
+  # resources :specials
+
+  # resources :dispensary_menus
 
   resources :stores
+
 
 end

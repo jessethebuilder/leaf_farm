@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>State:</strong>
+  <%= @patient_profile.state_id %>
+</p>
+
+<p>
+  <strong>Certification:</strong>
+  <%= @patient_profile.certification %>
+</p>
+
+<p>
+  <strong>State id expires:</strong>
+  <%= @patient_profile.state_id_expires %>
+</p>
+
+<p>
+  <strong>Certification expires:</strong>
+  <%= @patient_profile.certification_expires %>
+</p>
+
+<p>
+  <strong>Symptoms:</strong>
+  <%= @patient_profile.symptoms %>
+</p>
+
+<%= link_to 'Edit', edit_patient_profile_path(@patient_profile) %> |
+<%= link_to 'Back', patient_profiles_path %>

@@ -6,8 +6,9 @@ source "https://rubygems.org"
 gemspec
 
 
-gem 'farm_tools', :git => 'https://github.com/jessethebuilder/farm_tools' 
-# gem 'farm_tools', :path => 'C:\Users\jf\Desktop\jesseweb\farm_tools'
+# gem 'farm_tools', :git => 'https://github.com/jessethebuilder/farm_tools'
+gem 'farm_tools', :path => 'C:\Users\Bucky\Desktop\jesseweb\farm_tools\farm_tools'
+
 gem 'rails', '4.2'
 
 group :test do
@@ -27,12 +28,13 @@ end
 
 gem 'tzinfo-data'
 
+gem 'bootsy'
+gem 'geocoder'
+gem 'carrierwave'
+gem 'mini_magick'
 
- #todo
-# Declare any dependencies that are still in development here instead of in
-# your gemspec. These might include edge Rails or gems from your path or
-# Git. Remember to move these dependencies to your gemspec before releasing
-# your gem to rubygems.org.
 
-# To use debugger
-# gem 'debugger'
+gem 'devise'
+
+gem 'sass-rails'
+gem 'bootstrap-sass'

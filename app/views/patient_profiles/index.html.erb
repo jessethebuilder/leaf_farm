@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Patient Profiles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>State</th>
+      <th>Certification</th>
+      <th>State id expires</th>
+      <th>Certification expires</th>
+      <th>Symptoms</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @patient_profiles.each do |patient_profile| %>
+      <tr>
+        <td><%= patient_profile.state_id %></td>
+        <td><%= patient_profile.certification %></td>
+        <td><%= patient_profile.state_id_expires %></td>
+        <td><%= patient_profile.certification_expires %></td>
+        <td><%= patient_profile.symptoms %></td>
+        <td><%= link_to 'Show', patient_profile %></td>
+        <td><%= link_to 'Edit', edit_patient_profile_path(patient_profile) %></td>
+        <td><%= link_to 'Destroy', patient_profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Patient profile', new_patient_profile_path %>
