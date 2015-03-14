@@ -1,37 +1,11 @@
 module LeaflyBridge
   #Where all the hacks go to set up the connections between Leafly and Dispensary, Menu, etc. objects.
-
-  #validate leafly_slug
-  #has_one :leafly_connection
-
   def self.included(klass)
-     klass.class_eval do
+    klass.class_eval do
+      extend LeafBridgeClassMethods
 
-       has_one :leafly_connection, :as => :leafly_connectable
-       validates :leafly_slug, :presence => true
-
-       #main access for methods in this module.
-       define_singleton_method(:find_or_build_from_leafly) do |slug, leafly_connection, update_frequency: 3600|
-
-       #this find method also manages data updates from Leafly, based on :update_frequency
-       #does not save the record if :new_record?, but does if not.
-       dispensary = Dispensary.where(:leafly_slug => slug).first || Dispensary.new(:leafly_slug => slug, :update_frequency => update_frequency)
-
-        #attach a LeaflyConnection to this Dispensary, if one does not exist
-        dispensary.leafly_connection ||= leafly_connection
-
-        #get new data Dispensary if none exists, or if the time has gone beyond update_frequency
-        if dispensary.new_record? || Time.now > dispensary.updated_at + dispensary.update_frequency.seconds
-          dispensary.send(:populate_dispensary!)
-          unless dispensary.new_record?
-            dispensary.touch
-            dispensary.update_frequency = update_frequency
-            dispensary.save
-          end
-        end
-
-        dispensary
-      end
+      has_one :leafly_connection, :as => :leafly_connectable
+      validates :leafly_slug, :presence => true
     end
   end
 
@@ -90,7 +64,8 @@ module LeaflyBridge
   end
 
   def populate_dispensary!
-    raise ArgumentError, 'Dispensary has not Leafly Slug' if self.leafly_slug.nil?
+    raise ArgumentError, 'Dispensary does not have a Leafly Slug' if self.leafly_slug.nil?
+    raise ArgumentError, 'Dispensary does not have a LeaflyConnection Object' if self.leafly_connection.nil?
 
     d = leafly_connection.details(self.leafly_slug)
     self.name = d['name']
@@ -140,5 +115,55 @@ module LeaflyBridge
 
     ci
   end
-
 end
+
+module LeafBridgeClassMethods
+  def find_or_build_from_leafly(slug, leafly_connection, update_frequency: 3600)
+    d = Dispensary.where(:leafly_slug => slug).first || Dispensary.new(:leafly_slug => slug)
+
+    #todo not quite handling this object correctly. Revisit. This will be problematic when dealing with
+    #multiple leafly_connection objects
+    d.leafly_connection ||= leafly_connection
+    d.update_frequency = update_frequency
+
+    #populate, or repopulate the Dispensary object with data from Leafly.
+    if d.new_record? || Time.now > d.updated_at + d.update_frequency.seconds
+      d.send(:populate_dispensary!)
+      touch_and_update_record(d) unless d.new_record?
+    end
+
+    d
+  end
+
+  private
+
+  def touch_and_update_record(d)
+    d.touch
+    d.save
+  end
+end
+
+
+
+#
+# #main access for methods in this module.
+# define_singleton_method(:find_or_build_from_leafly) do |slug, leafly_connection, update_frequency: 3600|
+#
+#   #this find method also manages data updates from Leafly, based on :update_frequency
+#   #does not save the record if :new_record?, but does if not.
+#   dispensary = Dispensary.where(:leafly_slug => slug).first || Dispensary.new(:leafly_slug => slug, :update_frequency => update_frequency)
+#
+#   #attach a LeaflyConnection to this Dispensary, if one does not exist
+#   dispensary.leafly_connection ||= leafly_connection
+#
+#   #get new data Dispensary if none exists, or if the time has gone beyond update_frequency
+#   if dispensary.new_record? || Time.now > dispensary.updated_at + dispensary.update_frequency.seconds
+#     dispensary.send(:populate_dispensary!)
+#     unless dispensary.new_record?
+#       dispensary.touch
+#       dispensary.update_frequency = update_frequency
+#       dispensary.save
+#     end
+#   end
+#
+#   dispensary

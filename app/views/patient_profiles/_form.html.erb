@@ -1,8 +1,67 @@
-<%= form_for @patient_profile do |f| %>
+<%= form_for @patient_profile, :html => {:multipart => true} do |f| %>
+  <div class="row">
+    <div class="col-md-12">
+      <%= error_explanation(@patient_profile) %>
+    </div>
+  </div><!-- row -->
 
-  <%= image_select f, :certification, :alt_label => 'State Medical Certification', :accepts_remote_url => false %>
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="control-group">
+        <%= f.label :first_name, :class => 'control-label' %>
+        <%= f.text_field :first_name, :class => 'form-control' %>
+      </div>
+    </div><!-- col -->
+
+    <div class="col-sm-4">
+      <div class="control-group">
+        <%= f.label :middle_name, :class => 'control-label' %>
+        <%= f.text_field :middle_name, :class => 'form-control' %>
+      </div>
+    </div><!-- col -->
+
+    <div class="col-sm-4">
+      <div class="control-group">
+        <%= f.label :first_name, :class => 'control-label' %>
+        <%= f.text_field :first_name, :class => 'form-control' %>
+      </div>
+    </div><!-- col -->
+  </div><!-- row -->
+
+  <div class="row">
+    <div class="col-sm-2">
+      <div class="form-group">
+        <%= f.label :sex, :class => 'control-label' %>
+        <%= f.select :sex, array_for_select(['M', 'F']), {}, :class => 'form-control' %>
+      </div>
+    </div><!-- col -->
+
+    <div class="col-sm-6">
+      <div class="form-group">
+        <%= f.label :date_of_birth, :class => 'control-label' %>
+        <%= f.text_field :date_of_birth, :class => 'form-control datepicker' %>
+      </div>
+    </div>
+  </div><!-- row -->
+  <%= image_select f, :certification, :alt_label => 'State Medical Certification', :version => :preview, :accepts_remote_url => false %>
 
   <%= image_select f, :state_id, :accepts_remote_url => false %>
+
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="form-group">
+        <%= f.label :emergency_contact_name, :class => 'control-label' %>
+        <%= f.text_field :emergency_contact_name, :class => 'form-control' %>
+      </div>
+    </div><!-- col -->
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <%= f.label :emergency_contact_phone, :class => 'control-label' %>
+        <%= f.phone_field :emergency_contact_phone, :class => 'form-control' %>
+      </div>
+    </div><!-- col -->
+  </div><!-- row -->
 
   <div class="row">
     <div class="col-md-12">
@@ -14,3 +73,12 @@
 
 
 <% end %>
+
+<script>
+  function setUpDateTimePicker(){
+    alert('xx');
+    $('.datepicker').datepicker();
+  }
+
+  ready_methods.push(setUpDatePicker);
+</script>

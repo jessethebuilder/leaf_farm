@@ -38,3 +38,8 @@ gem 'devise'
 
 gem 'sass-rails'
 gem 'bootstrap-sass'
+gem 'jquery-rails'
+
+
+
+# gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
