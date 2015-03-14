@@ -1,4 +1,11 @@
 FactoryGirl.define do
+  factory :dispensary do
+    name Faker::Company.name
+
+    factory :leafly_dispensary do
+      leafly_slug 'green-orchard' #matches test_slug in LeaflyBridgeSpec
+    end
+  end
 
   factory :leafly_connection do
     app_id 'd2a4564b'

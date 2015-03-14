@@ -144,9 +144,13 @@ ActiveRecord::Schema.define(version: 20150307214559) do
     t.date     "certification_expires"
     t.text     "symptoms",                 default: "--- []\n"
     t.string   "sex"
+    t.string   "date_of_birth"
     t.string   "first_name"
     t.string   "middle_name"
     t.string   "last_name"
+    t.string   "emergency_contact_name"
+    t.string   "emergency_contact_phone"
+    t.string   "emergency_contact_email"
     t.integer  "has_patient_profile_id"
     t.string   "has_patient_profile_type"
     t.datetime "created_at",                                    null: false
