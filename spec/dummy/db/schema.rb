@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150314202435) do
+ActiveRecord::Schema.define(version: 20150307103243) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "label"
@@ -157,24 +157,6 @@ ActiveRecord::Schema.define(version: 20150314202435) do
     t.datetime "updated_at",                                    null: false
   end
 
-  create_table "patients", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "patients", ["email"], name: "index_patients_on_email", unique: true
-  add_index "patients", ["reset_password_token"], name: "index_patients_on_reset_password_token", unique: true
-
   create_table "social_networking_profiles", force: :cascade do |t|
     t.string   "facebook_app_id"
     t.string   "facebook_app_secret"
@@ -197,9 +179,8 @@ ActiveRecord::Schema.define(version: 20150314202435) do
     t.string   "name"
     t.text     "description"
     t.string   "fine_print"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
-    t.integer  "dispensary_menu_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "stores", force: :cascade do |t|
