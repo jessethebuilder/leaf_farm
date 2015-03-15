@@ -27,6 +27,8 @@ describe Dispensary do
         dispensary.save
         Dispensary.find_or_build_from_leafly(test_slug, leafly_connection).should == dispensary
       end
+
+
     end
   end
 end
