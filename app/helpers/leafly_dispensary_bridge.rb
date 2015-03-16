@@ -72,11 +72,6 @@ module LeaflyDispensaryBridgeClassMethods
   def find_or_build_from_leafly(slug, leafly_connection, update_frequency: 3600)
     d = Dispensary.where(:leafly_slug => slug).first || Dispensary.new(:leafly_slug => slug)
 
-    #todo not quite handling this object correctly. Revisit. This will be problematic when dealing with
-    #multiple leafly_connection objects
-    # d.leafly_connection ||= leafly_connection
-    # d.update_frequency = update_frequency
-
     #populate, or repopulate the Dispensary object with data from Leafly.
     if d.new_record? || Time.now > d.updated_at + update_frequency
       d.send(:populate_dispensary!, leafly_connection)

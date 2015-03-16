@@ -1,4 +1,12 @@
 module LeaflyProductBridge
+  def self.included(klass)
+    klass.class_eval do
+      extend LeaflyProductBridgeClassMethods
+    end
+  end
+end
+
+module LeaflyProductBridgeClassMethods
   def build_dispensary_product_from_leafly(leafly_hash)
     dp = DispensaryProduct.new
     dp.source = 'leafly'
