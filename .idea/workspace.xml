@@ -3,13 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8e5940c6-87c4-4407-8f42-b54ef32fcf27" name="Default" comment="Leafly Bridge Class">
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../leaf_farm_demo/app/controllers/dispensary_menus_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/dummy/config/application.rb" afterPath="$PROJECT_DIR$/spec/dummy/config/application.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/support/factories.rb" afterPath="$PROJECT_DIR$/spec/support/factories.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/leaf_farm.iml" afterPath="$PROJECT_DIR$/.idea/leaf_farm.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/leafly_connection.rb" afterPath="$PROJECT_DIR$/app/models/leafly_connection.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/models/leafly_connection_spec.rb" afterPath="$PROJECT_DIR$/spec/models/leafly_connection_spec.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/leaf_farm/mower.rb" afterPath="$PROJECT_DIR$/lib/leaf_farm/mower.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/dummy/config/environments/test.rb" afterPath="$PROJECT_DIR$/spec/dummy/config/environments/test.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="leaf_farm.iws" />
@@ -855,7 +848,13 @@
       <option name="project" value="LOCAL" />
       <updated>1426479759615</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="Leafly Bridge Class">
+      <created>1426555902303</created>
+      <option name="number" value="00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1426555902303</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
