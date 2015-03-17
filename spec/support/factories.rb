@@ -12,4 +12,16 @@ FactoryGirl.define do
     app_key '99a0732ea84b0223388e630f5b3b7e21'
   end
 
+  factory :address do
+
+    factory :real_address do
+      #utility factory for methods that do searches based on geolocation
+      street '15615 Hwy 101'
+      city 'Quilcene'
+      state 'wa'
+
+      after(:build){ |addr, e| addr.geocode }
+    end
+  end
+
 end
