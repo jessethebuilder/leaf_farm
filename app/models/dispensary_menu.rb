@@ -7,4 +7,6 @@ class DispensaryMenu < ActiveRecord::Base
 
   serialize :menu_data, JSON
   serialize :specials_data, JSON
+
+
 end
