@@ -15,7 +15,7 @@ module LeaflyMenuBridge
   end
 
   def has_specials?
-    !menu_data.blank?
+    !specials_data.blank?
   end
 
   def sections
